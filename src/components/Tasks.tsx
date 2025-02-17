@@ -34,14 +34,15 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }: ITasksProps) {
     <ul className='space-y-4 p-6 bg-slate-200 rounded-md shadow'>
       {tasks.length > 0 ? (
         tasks.map((task) => (
-          <li key={task.id} className='flex gap-2'>
+          <li key={task.id} className='flex gap-2 items-center'>
             <button
               onClick={() => onTaskClick(task.id)}
-              className={`bg-slate-400 text-left w-full text-white p-2 rounded-md flex ${
+              className={`flex-1 bg-slate-400 text-left text-white p-2 rounded-md flex items-center gap-2 ${
                 task.completed && 'line-through'
               }`}
             >
-              {task.completed && <CheckIcon className='mr-2' />} {task.title}
+              {task.completed && <CheckIcon />}
+              <span className='truncate min-w-0 max-w-85'>{task.title}</span>
             </button>
             <Button onClick={() => onSeeDetailsClick(task)}>
               <ChevronRightIcon />
